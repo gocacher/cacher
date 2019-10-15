@@ -1,6 +1,5 @@
 package cacher
 
-//var cache sync.Map
 var cache Cacher
 
 /*RegisterCache register cache to map */
