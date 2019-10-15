@@ -1,5 +1,11 @@
 package cacher
 
+import (
+	"encoding/json"
+	"errors"
+)
+
+var WrongTypeError = errors.New("input src type was wrong")
 var cache Cacher
 
 /*RegisterCache register cache to map */
@@ -55,4 +61,18 @@ func SetMultiple(values map[string]interface{}) error {
 //DeleteMultiple delete multiple value
 func DeleteMultiple(keys ...string) error {
 	return cache.DeleteMultiple(keys...)
+}
+
+func Decode(src, target interface{}) error {
+	if v, b := src.([]byte); b {
+		e := json.Unmarshal(v, target)
+		if e != nil {
+			return e
+		}
+	}
+	return WrongTypeError
+}
+
+func Encode(src interface{}) ([]byte, error) {
+	return json.Marshal(src)
 }
