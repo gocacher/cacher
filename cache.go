@@ -1,11 +1,5 @@
 package cacher
 
-import (
-	"encoding/json"
-	"errors"
-)
-
-var WrongTypeError = errors.New("input src type was wrong")
 var cache Cacher
 
 /*RegisterCache register cache to map */
@@ -14,22 +8,22 @@ func Register(c Cacher) {
 }
 
 //Get get value
-func Get(key string) (interface{}, error) {
+func Get(key string) ([]byte, error) {
 	return cache.Get(key)
 }
 
 //GetD get value ,if not found return a default value
-func GetD(key string, v interface{}) interface{} {
+func GetD(key string, v []byte) []byte {
 	return cache.GetD(key, v)
 }
 
 //Set set value
-func Set(key string, val interface{}) error {
+func Set(key string, val []byte) error {
 	return cache.Set(key, val)
 }
 
 //SetWithTTL set value with time to life
-func SetWithTTL(key string, val interface{}, ttl int64) error {
+func SetWithTTL(key string, val []byte, ttl int64) error {
 	return cache.SetWithTTL(key, val, ttl)
 }
 
@@ -49,30 +43,16 @@ func Clear() error {
 }
 
 //GetMultiple get multiple value
-func GetMultiple(keys ...string) (map[string]interface{}, error) {
+func GetMultiple(keys ...string) (map[string][]byte, error) {
 	return cache.GetMultiple(keys...)
 }
 
 //SetMultiple set multiple value
-func SetMultiple(values map[string]interface{}) error {
+func SetMultiple(values map[string][]byte) error {
 	return cache.SetMultiple(values)
 }
 
 //DeleteMultiple delete multiple value
 func DeleteMultiple(keys ...string) error {
 	return cache.DeleteMultiple(keys...)
-}
-
-func Decode(src, target interface{}) error {
-	if v, b := src.([]byte); b {
-		e := json.Unmarshal(v, target)
-		if e != nil {
-			return e
-		}
-	}
-	return WrongTypeError
-}
-
-func Encode(src interface{}) ([]byte, error) {
-	return json.Marshal(src)
 }
