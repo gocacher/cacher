@@ -7,7 +7,7 @@ type Cacher interface {
 	//get a value
 	Get(key string) (interface{}, error)
 	//get a value from cache with default
-	GetD(key string, v interface{}) (interface{}, error)
+	GetD(key string, v interface{}) interface{}
 	//set a value to cache
 	Set(key string, val interface{}) (Cacher, error)
 	//set a value with ttl
