@@ -14,17 +14,17 @@ func Get(key string) (interface{}, error) {
 }
 
 //GetD get value ,if not found return a default value
-func GetD(key string, v interface{}) (interface{}, error) {
+func GetD(key string, v interface{}) interface{} {
 	return cache.GetD(key, v)
 }
 
 //Set set value
-func Set(key string, val interface{}) (Cacher, error) {
+func Set(key string, val interface{}) error {
 	return cache.Set(key, val)
 }
 
 //SetWithTTL set value with time to life
-func SetWithTTL(key string, val interface{}, ttl int64) (Cacher, error) {
+func SetWithTTL(key string, val interface{}, ttl int64) error {
 	return cache.SetWithTTL(key, val, ttl)
 }
 
@@ -34,7 +34,7 @@ func Has(key string) (bool, error) {
 }
 
 //Delete delete value
-func Delete(key string) (Cacher, error) {
+func Delete(key string) error {
 	return cache.Delete(key)
 }
 
@@ -49,11 +49,11 @@ func GetMultiple(keys ...string) (map[string]interface{}, error) {
 }
 
 //SetMultiple set multiple value
-func SetMultiple(values map[string]interface{}) (Cacher, error) {
+func SetMultiple(values map[string]interface{}) error {
 	return cache.SetMultiple(values)
 }
 
 //DeleteMultiple delete multiple value
-func DeleteMultiple(keys ...string) (Cacher, error) {
+func DeleteMultiple(keys ...string) error {
 	return cache.DeleteMultiple(keys...)
 }
