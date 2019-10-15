@@ -2,7 +2,7 @@
 
 you can use `Register(Cacher)` in your init to implements a `Cacher` then use the interface{}
 ```go
-/*Cacher define an cache interface */
+/*Cacher defined a cache interface */
 type Cacher interface {
 	//get a value
 	Get(key string) (interface{}, error)
