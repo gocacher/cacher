@@ -7,6 +7,11 @@ func Register(c Cacher) {
 	cache = c
 }
 
+/*Instance get current cacher instance*/
+func Instance() Cacher {
+	return cache
+}
+
 //Get get value
 func Get(key string) ([]byte, error) {
 	return cache.Get(key)
