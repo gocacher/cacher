@@ -26,3 +26,10 @@ type Cacher interface {
 	DeleteMultiple(keys ...string) error
 }
 ```
+
+
+now cacher has two implements:
+
+https://github.com/gocacher/badger-cache  
+https://github.com/gocacher/file-cache  
+https://github.com/gocacher/map-cache  //undone
