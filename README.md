@@ -1,6 +1,6 @@
 # cacher is a definition with cache
 
-you can use `Register(Cacher)` in your init to implements a `Cacher` then use the interface{}
+you can use `Register(Cacher)` in your code to implements a `Cacher` then use the interface{}
 ```go
 /*Cacher define an cache interface */
 type Cacher interface {
