@@ -33,3 +33,16 @@ now cacher has two implements:
 https://github.com/gocacher/badger-cache  
 https://github.com/gocacher/file-cache  
 https://github.com/gocacher/map-cache  //undone
+
+3 steps to make your cacher: `import -> new -> register`  
+```go 
+//example:
+import (
+	cache "github.com/gocacher/badger-cache/v2"
+	"github.com/gocacher/cacher"
+)
+
+func RegisterCache() {
+	cacher.Register(cache.New())
+}
+```
